@@ -26,7 +26,7 @@ namespace DeleteEmptyDirs
             foreach (var d in from.GetDirectories())
             {
                 if (d.GetDirectories().Length > 0) DeleteDirs(d);
-                if (d.GetFiles().Length == 0)
+                if (d.GetFiles().Length == 0 && d.GetDirectories().Length == 0)
                 {
                     while (Directory.Exists(d.FullName))
                     {

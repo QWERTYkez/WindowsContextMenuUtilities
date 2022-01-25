@@ -32,7 +32,7 @@ class Program
                                 using (var cmd = root.CreateSubKey("command", true))
                                 {
                                     //command
-                                    cmd.SetValue(null, $"{Process.GetCurrentProcess().MainModule.FileName} -Path %V");
+                                    cmd.SetValue(null, $"{Process.GetCurrentProcess().MainModule.FileName} -Path \"%V\"");
                                     Console.WriteLine("Успешно!!");
                                     Console.ReadLine();
                                 }

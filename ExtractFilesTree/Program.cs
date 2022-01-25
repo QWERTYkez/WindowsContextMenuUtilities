@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Security.Principal;
 using System.Threading;
-using Microsoft.Win32;
 
 namespace ExtractFilesTree;
 
@@ -16,7 +16,6 @@ class Program
             if (args[0] == "-Path")
             {
                 var dir = new DirectoryInfo(args[1]);
-
                 GatFiles(dir.FullName, dir);
             }
         }
@@ -36,7 +35,7 @@ class Program
                                 using (var cmd = root.CreateSubKey("command", true))
                                 {
                                     //command
-                                    cmd.SetValue(null, $"{Process.GetCurrentProcess().MainModule.FileName} -Path %V");
+                                    cmd.SetValue(null, $"{Process.GetCurrentProcess().MainModule.FileName} -Path \"%V\"");
                                     Console.WriteLine("Успешно!!");
                                     Console.ReadLine();
                                 }
